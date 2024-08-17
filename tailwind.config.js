@@ -15,15 +15,21 @@ module.exports = {
         "secondary-300": "#b52faa",
         
       },
-      backgroundImage: {
-
+      backgroundImage: (theme) => ({
+        "gradient-blue": "linear-gradient(90deg, #fff 0%, #090f2e 100%)",
+        "mobile-home": "url('./assets/homeImage.png')"
+      }),
+      fontFamily: {
+        signika: ["Signika", "sans-serif"]
       },
       content: {
 
       }
     },
     screens: {
-
+      "xs": "480px",
+      "sm": "768px",
+      "md": "1060px"
     }
   },
   plugins: [],
