@@ -17,7 +17,7 @@ module.exports = {
       },
       backgroundImage: (theme) => ({
         "gradient-blue": "linear-gradient(90deg, #fff 0%, #090f2e 100%)",
-        "mobile-home": "url('./assets/homeImage.png')"
+        'HomeBg': "linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(34, 34, 34, 0.8)), url('./assets/punchBag.jpg')",
       }),
       fontFamily: {
         signika: ["Signika", "sans-serif"]

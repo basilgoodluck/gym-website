@@ -53,7 +53,7 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
             </div>
             <div>
             <Link 
-                page="Newletter"
+                page="Newsletter"
                 selectedPage={selectedPage}
                 setSelectedPage={setSelectedPage}
               />
@@ -70,11 +70,11 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
             </button>
           )}
       </div>
-      {!isAboveMediaScreen && isMobileNav && (
-        <div className={`bg-white fixed flex items-center justify-center z-40`}>
+      {!isAboveMediaScreen  && (
+        <div className={`bg-white h-screen fixed ${isMobileNav ? "w-[300px] left-0" : "w-[0] -left-[100px]"} flex items-center justify-center z-40 transition-all duration-300 ease-in`}>
           <div>
-            <nav className="h-full w-full flex justify-center items-center mt-[300px]">
-              <div className={`${flexBetween} flex-col bg-white w-[300px] h-full gap-8`}>
+            <nav className={`w-full flex justify-center items-center mt-[300px]`}>
+              <div className={`${flexBetween} flex-col bg-white h-full gap-8`}>
                 <Link 
                   page="Home"
                   selectedPage={selectedPage}
