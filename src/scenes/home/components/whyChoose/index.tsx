@@ -10,7 +10,7 @@ const WhyChoose = ({}: Props) => {
             <p className="text-center text-gray-500 text-sm font-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio sit labore mollitia, dolore cupiditate illo est eius eveniet</p>
             <div>
                 {/* <img src={punchBag} alt="punchBag" className="" /> */}
-                <div className="grid grid-cols-2 py-6 gap-8">
+                <div className="grid grid-cols-2 py-6 px-8 gap-8">
                     <div className="flex gap-3">
                         <div >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-5">

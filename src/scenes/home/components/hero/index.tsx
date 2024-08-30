@@ -19,7 +19,7 @@ const Hero = ({}: Props) => {
               <img src={HomeBg} className="w-full" />
             </div>
             <div className="w-full">
-              <div className="w-full bg-gray-900 py-5 px-6 flex justify-between">
+              <div className="w-full bg-black py-5 px-6 flex justify-between">
                 <div>
                   <h4 className="text-xs">500+</h4>
                   <p className="text-[7px] font-extralight">Happy members</p>
