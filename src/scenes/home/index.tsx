@@ -1,4 +1,3 @@
-import HomeBg from "@/assets/homeImage.png"
 import Hero from "./components/hero"
 import WhyChoose from "./components/whyChoose"
 import OurTrainers from "./components/ourTrainers"

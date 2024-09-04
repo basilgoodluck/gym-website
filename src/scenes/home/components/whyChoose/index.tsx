@@ -1,5 +1,3 @@
-import punchBag from "@/assets/punchBag.jpg"
-
 type Props = {}
 
 const WhyChoose = ({}: Props) => {
