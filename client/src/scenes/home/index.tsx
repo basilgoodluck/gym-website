@@ -3,6 +3,7 @@ import WhyChoose from "./components/whyChoose"
 import OurTrainers from "./components/ourTrainers"
 import Coaches from "./components/coaches"
 import Pricing from "./components/pricing"
+import Reviews from "./components/reviews"
 
 type Props = {}
 
@@ -14,6 +15,7 @@ const Home = ({}: Props) => {
       <OurTrainers />
       <Coaches />
       <Pricing />
+      <Reviews />
     </div>
   )
 }
