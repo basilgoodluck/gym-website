@@ -15,7 +15,7 @@ module.exports = {
         "secondary-300": "#b52faa",
         
       },
-      backgroundImage: (theme) => ({
+      backgroundImage: () => ({
         "gradient-blue": "linear-gradient(90deg, #fff 0%, #090f2e 100%)",
         'HomeBg': "linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(34, 34, 34, 0.8)), url('./assets/punchBag.jpg')",
         'lightBlue': "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))"

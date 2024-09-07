@@ -19,7 +19,8 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
     >
       <div className={`${flexBetween}  p-4 w-full bg-white`}>
         <div className="">
-          <img alt="logoimage" src={Logo} className="w-28 h-full"/>
+          {/* <img alt="logoimage" src={Logo} className="w-28 h-full"/> */}
+          <h4 className="text-xl font-bold"><span className="text-secondary-300 italic font-extrabold text-3xl">A</span>-lpha GYM</h4>
         </div>
         { isAboveMediaScreen ? (
           

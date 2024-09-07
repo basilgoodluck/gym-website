@@ -4,6 +4,8 @@ import OurTrainers from "./components/ourTrainers"
 import Coaches from "./components/coaches"
 import Pricing from "./components/pricing"
 import Reviews from "./components/reviews"
+import Contact from "./components/contact"
+import Footer from "./components/footer"
 
 type Props = {}
 
@@ -16,6 +18,8 @@ const Home = ({}: Props) => {
       <Coaches />
       <Pricing />
       <Reviews />
+      <Contact />
+      <Footer />
     </div>
   )
 }
