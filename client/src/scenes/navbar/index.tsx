@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Logo from "@/assets/logo.png";
 import Link from "@/scenes/navbar/link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
