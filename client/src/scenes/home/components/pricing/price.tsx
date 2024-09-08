@@ -1,10 +1,12 @@
 type Props = {
   level: String,
   amount: String,
-  duration: String
+  duration: String,
+  standard: Boolean
+  advanced: Boolean
 }
 
-function Price({ level, amount, duration }: Props) {
+function Price({ level, amount, duration, standard, advanced }: Props) {
   return (
     <div className="flex flex-col gap-4 mt-6">
         <div className="flex flex-col gap-2">
@@ -27,25 +29,25 @@ function Price({ level, amount, duration }: Props) {
                   <p>Lorem ipsum dolor sit amet consectetur</p>
                 </div>
                 <div className="flex gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={ standard ? "text-blue-400 size-6" : "size-6" }>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
                   <p>Lorem ipsum dolor sit amet consectetur</p>
                 </div>
                 <div className="flex gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={ standard ? "text-blue-400 size-6" : "size-6" }>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
                   <p>Lorem ipsum dolor sit amet consectetur</p>
                 </div>
                 <div className="flex gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={ advanced ? "text-blue-400 size-6" : "size-6" }>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
                   <p>Lorem ipsum dolor sit amet consectetur</p>
                 </div>
                 <div className="flex gap-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className={ advanced ? "text-blue-400 size-6" : "size-6" }>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
                   <p>Lorem ipsum dolor sit amet consectetur</p>

@@ -5,13 +5,18 @@ type Props = {}
 const Reviews = ({}: Props) => {
   return (
     <div className="flex flex-col gap-4 px-6 mt-6">
-      <div>
-        <div className="flex justify-between">
+      <div className="flex flex-col gap-10">
+        <div className="flex justify-between items-center">
           <div>
             <p className="text-xs">Reviews</p>
             <h1 className="text-2xl font-bold">FROM YOU</h1>
           </div>
-          <button className="bg-black text-white px-3 rounded-xl text-sm">Give Review</button>
+          <button className="bg-black text-white rounded-xl text-sm py-2 px-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+              <path stroke-linecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <p>Give review</p>
+          </button>
         </div>          
         <div>
           <div><img src={groupImages} alt="groupImages" /></div>

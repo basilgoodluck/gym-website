@@ -39,16 +39,22 @@ const Pricing = ({}: Props) => {
                   level={"Beginner"} 
                   amount={"30"} 
                   duration={"month"} 
+                  standard={false}
+                  advanced={false}
                   />
                   <Price
                   level={"Standard"} 
                   amount={"150"} 
                   duration={"month"} 
+                  standard={true}
+                  advanced={false}
                   />
                   <Price
                   level={"Advanced"} 
                   amount={"300"} 
                   duration={"month"} 
+                  standard={true}
+                  advanced={true}
                   />
                 </>
               ) : (
@@ -57,16 +63,22 @@ const Pricing = ({}: Props) => {
                   level={"Beginner"} 
                   amount={"360"} 
                   duration={"year"} 
+                  standard={false}
+                  advanced={false}
                   />
                   <Price
                   level={"Standard"} 
                   amount={"1800"} 
                   duration={"year"} 
+                  standard={true}
+                  advanced={false}
                   />
                   <Price
                   level={"Advanced"} 
                   amount={"3600"} 
                   duration={"year"} 
+                  standard={true}
+                  advanced={true}
                   />
                 </>
               )
