@@ -71,10 +71,10 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           )}
       </div>
       {!isAboveMediaScreen  && (
-        <div className={`bg-white h-screen fixed ${isMobileNav ? "w-[300px] left-0" : "w-[0] -left-[100px]"} flex items-center justify-center z-40 transition-all duration-300 ease-in`}>
+        <div className={`h-[2000px] bg-white fixed ${isMobileNav ? "w-[400px] left-0" : "w-[0] -left-[100px]"} flex items-center justify-center z-40 transition-all duration-300 ease-in`}>
           <div>
             <nav className={`w-full flex justify-center items-center mt-[300px]`}>
-              <div className={`${flexBetween} flex-col bg-white h-full gap-8`}>
+              <div className={`${flexBetween} flex-col mt-[200px] bg-white h-full gap-8`}>
                 <Link 
                   page="Home"
                   selectedPage={selectedPage}
