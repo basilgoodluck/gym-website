@@ -1,13 +1,17 @@
-type Props = {}
+type Props = {
+  level: String,
+  amount: String,
+  duration: String
+}
 
-function Price({}: Props) {
+function Price({ level, amount, duration }: Props) {
   return (
     <div className="flex flex-col gap-4 mt-6">
         <div className="flex flex-col gap-2">
           <div>
             <div className="bg-black drop-shadow-2xl px-3 py-7 rounded-2xl flex flex-col gap-4">
-              <p className="text-xs text-secondary-100">Beginner</p>
-              <h1 className="text-5xl font-bold text-white">05<span className="text-xs font-normal">/month</span></h1>
+              <p className="text-xs text-secondary-100">{level}</p>
+              <h1 className="text-5xl font-bold text-white">{amount}<span className="text-xs font-normal">/{duration}</span></h1>
               <p className="text-sm text-[#aaa]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti maxime excepturi fuga quaerat, quod commodi a magni</p>
               <div className="flex flex-col gap-3 text-sm text-[#aaa]">
                 <div className="flex gap-3">

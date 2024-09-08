@@ -5,10 +5,19 @@ type Props = {}
 
 const Pricing = ({}: Props) => {
   const [isMonth, setIsMonth] = useState(true)
+  const [isYear, setIsYear] = useState(false)
+
+  const buttonStyleMonth = {
+    backgroundColor: isMonth ? "black" : "#eee"
+  }
+  const buttonStyleYear = {
+    backgroundColor: isYear ? "black" : "#eee"
+  }
   const changeDuration = () => {
     setIsMonth(() => !isMonth)
+    setIsYear(() => !isYear)
   }
-  console.log(isMonth)
+  console.log(isMonth, isYear)
   return (
     <div className="flex flex-col gap-4 px-6 mt-6">
         <div className="flex flex-col gap-2">
@@ -17,13 +26,51 @@ const Pricing = ({}: Props) => {
               <p className="font-medium uppercase text-xs">Pricing plan</p>
               <h1 className="text-primary-500 font-bold text-xl">JOIN TODAY</h1>
             </div>
-            <div className="flex gap-2 bg-gray-200 rounded-2xl text-white text-xs">
-              <button className="rounded-s-2xl px-3 py-1" onClick={changeDuration}>Monthly</button>
-              <button className="bg-black h-full w-full rounded-e-2xl py-1 px-3">Yearly</button>
+            <div className="flex bg-gray-200 rounded-2xl text-white text-xs">
+              <button className="rounded-s-2xl px-3 py-2" onClick={changeDuration} style={buttonStyleMonth}>Monthly</button>
+              <button className="bg-black h-full w-full rounded-e-2xl py-2 px-3" onClick={changeDuration} style={buttonStyleYear}>Yearly</button>
             </div>
           </div>
           <div className='flex flex-col gap-4'>
-            <Price />
+            {
+              isMonth ? (
+                <>
+                  <Price
+                  level={"Beginner"} 
+                  amount={"30"} 
+                  duration={"month"} 
+                  />
+                  <Price
+                  level={"Standard"} 
+                  amount={"150"} 
+                  duration={"month"} 
+                  />
+                  <Price
+                  level={"Advanced"} 
+                  amount={"300"} 
+                  duration={"month"} 
+                  />
+                </>
+              ) : (
+                <>
+                  <Price
+                  level={"Beginner"} 
+                  amount={"360"} 
+                  duration={"year"} 
+                  />
+                  <Price
+                  level={"Standard"} 
+                  amount={"1800"} 
+                  duration={"year"} 
+                  />
+                  <Price
+                  level={"Advanced"} 
+                  amount={"3600"} 
+                  duration={"year"} 
+                  />
+                </>
+              )
+            }
           </div>
         </div>
     </div>
