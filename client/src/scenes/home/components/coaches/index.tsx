@@ -15,7 +15,7 @@ const Coaches = ({}: Props) => {
                 <p className="text-xs font-extralight">
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti maxime excepturi fuga quaerat, quod commodi a magni, quidem atque blanditiis voluptas omnis inventore hic velit? Ullam quasi magnam amet qui?
                 </p>
-                <button className="bg-black p-3 text-white text-sm w-[200px]">Explore more</button>
+                <button className="bg-black p-2 rounded-2xl text-white text-sm w-[200px]">Explore more</button>
             </div>
         </div>
     </div>
