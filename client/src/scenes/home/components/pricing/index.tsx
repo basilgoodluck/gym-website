@@ -8,10 +8,10 @@ const Pricing = ({}: Props) => {
   const [isYear, setIsYear] = useState(false)
 
   const buttonStyleMonth = {
-    backgroundColor: isMonth ? "black" : "#eee"
+    backgroundColor: isMonth ? "black" : "#ccc"
   }
   const buttonStyleYear = {
-    backgroundColor: isYear ? "black" : "#eee"
+    backgroundColor: isYear ? "black" : "#ccc"
   }
   const changeDuration = () => {
     setIsMonth(() => !isMonth)
@@ -19,7 +19,7 @@ const Pricing = ({}: Props) => {
   }
   console.log(isMonth, isYear)
   return (
-    <div className="flex flex-col gap-4 px-6 mt-6">
+    <div className="bg-[#eee] flex flex-col gap-4 px-6 mt-6 py-5 rounded-3xl">
         <div className="flex flex-col gap-2">
           <div className="flex justify-between items-start">
             <div className="flex flex-col gap-2">

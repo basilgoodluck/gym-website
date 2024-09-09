@@ -2,7 +2,7 @@ type Props = {}
 
 const Footer = ({}: Props) => {
   return (
-    <div className="flex flex-col gap-4 px-6 mt-6 pb-5">
+    <div className="bg-[#eee] flex flex-col gap-4 px-6 pt-12 pb-2">
         <div>
             <div className="flex flex-col gap-4">
                 <h4 className="text-xl font-bold"><span className="text-secondary-300 italic font-extrabold text-3xl">A</span>-lpha GYM</h4>
@@ -31,6 +31,7 @@ const Footer = ({}: Props) => {
                 </div>
             </div>
         </div>
+        <div className="text-sm">All rights Reserved, 2024</div>
     </div>
   )
 }
