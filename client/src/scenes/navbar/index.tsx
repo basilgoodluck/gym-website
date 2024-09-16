@@ -71,8 +71,8 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           )}
       </div>
       {!isAboveMediaScreen  && (
-        <div className={`h-[2000px] bg-white fixed ${isMobileNav ? "w-full left-0" : "w-[0] -left-[100px]"} flex items-center justify-center z-40 transition-all duration-300 ease-in`}>
-          <div className="w-full mt-[400px]">
+        <div className={`fixed h-full bg-white top-0 ${isMobileNav ? "w-full left-0" : "w-[0] -left-[100px]"} z-40 transition-all duration-200 ease-in`}>
+          <div className="w-full mt-5">
             <nav className={`w-full relative flex justify-center items-center`}>
               <button onClick={() => setIsMobileNav(!isMobileNav)} className="absolute top-[0px] right-[12px]">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-10">
