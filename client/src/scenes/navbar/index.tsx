@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "@/scenes/navbar/link";
+import JoinUsModal from "../home/components/joinUs";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { TbFileUpload } from "react-icons/tb";
+import { IoClose } from "react-icons/io5";
 
 type Props = {
   selectedPage: SelectedPage;
@@ -12,8 +13,6 @@ type Props = {
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isMobileNav, setIsMobileNav] = useState<boolean>(false);
-  const openFile = useRef<HTMLInputElement>(null)
-  const selectGender = useRef<HTMLInputElement>(null)
   const flexBetween = "flex items-center justify-between";
   const isAboveMediaScreen = useMediaQuery("(min-width: 1060px)");
 
@@ -25,13 +24,6 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
       document.body.style.overflow = "";
     }
   }, [isModalOpen, isMobileNav]);
-
-  const openUpload = () => {
-    openFile.current?.click()
-  }
-  const openSelectGender = () => {
-    selectGender.current?.click()
-  }
 
   return (
     <div className={`${flexBetween} w-full sticky top-0 z-30 shadow-lg`}>
@@ -108,59 +100,12 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-4 rounded-lg w-[90%]">
-            <h2 className="text-xl font-bold mb-4 text-black">Join Us</h2>
-            <div>
-              <div className="px-2 relative h- flex justify-center items-center">
-                <div className="relative flex justify-between items-center w-full">
-                  <div className="progress absolute border border-gray-400 w-full top-[50%] -translate-y-1/2"></div>
-                  <div className="p-2 rounded-full flex justify-center items-center gap-2 flex-col z-10 bg-white ">
-                    <p className="bg-black w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-black text-white text-xs ">1</p>
-                    <p className="text-[10px]">Basic Detail</p>
-                  </div>
-                  <div className="p-2 rounded-full flex justify-center items-center gap-2 flex-col z-10 bg-white">
-                    <p className="bg-gray-200 w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-gray-200 text-white text-xs ">2</p>
-                    <p className="text-[10px]">Membership Detail</p>
-                  </div>
-                  <div className="p-2 rounded-full flex justify-center items-center gap-2 flex-col z-10 bg-white">
-                    <p className="bg-gray-200 w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-gray-200 text-white text-xs">3</p>
-                    <p className="text-[10px]">Payment</p>
-                  </div>
-                  
-                </div>
-              </div>
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-bold text-black">Join Us</h2>
+              <button className="block" onClick={() => setIsModalOpen(false)}><IoClose className="text-4xl text-black" /></button>
             </div>
-            <div>
-              <form className="flex flex-col gap-4">
-                <h1>Basic Details</h1>
-                <div className="flex gap-3 w-full">
-                  <div className="w-1/2 flex flex-col justify-between">
-                    <input type="text" placeholder="Enter name" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full "/>
-                    <input type="text" placeholder="Enter phone no" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full"/>
-                    <input type="text" placeholder="Enter email" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full"/>
-                  </div>
-                  <button type="button" onClick={openUpload} className="border-4 border-dotted border-gray-400 h-full w-1/2 rounded-md py-6 flex flex-col justify-center items-center gap-2 ">
-                    <input type="file" ref={openFile} id="your_file" className="hidden outline-none" />
-                    <TbFileUpload className="text-2xl" />
-                    <h4 className="text-sm ">Drop your files here</h4>
-                    <em className="text-[8px] text-gray-50">Maximum upload file size is 2mb</em>
-                  </button>
-                </div>
-                <div className="flex gap-3">
-                  <button type="button" className="bg-gray-200 py-1  rounded-md w-full" onClick={openSelectGender} >
-                    {/* <p ref={selectGender}>--select--</p> */}
-                    <select className={`cursor-pointer appearance-none bg-transparent outline-none bg-gray-200 border-0 text-sm`}>
-                      <option className="bg-gray-200 text-sm]"  disabled selected>Select Gender</option>
-                      <option className="text-sm text-center">Male</option>
-                      <option className="text-sm text-center">Female</option>
-                    </select>
-                  </button>
-                  <input type="text" className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter age" />
-                  <input className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter weight" />
-                  <input className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter height" />
-                </div>
-                <button onClick={() => setIsModalOpen(false)} className="mt- bg-black text-white px-4 py-2 rounded">Next</button>
-              </form>
-            </div>
+            <JoinUsModal />
+            
           </div>
         </div>
       )}
