@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "@/scenes/navbar/link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import { TbFileUpload } from "react-icons/tb";
 
 type Props = {
   selectedPage: SelectedPage;
@@ -97,23 +98,23 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-8 rounded-lg w-[90%]">
-            <h2 className="text-2xl font-bold mb-4">Join Us</h2>
+          <div className="bg-white p-4 rounded-lg w-[90%]">
+            <h2 className="text-xl font-bold mb-4 text-black">Join Us</h2>
             <div>
               <div className="px-2 relative h- flex justify-center items-center">
                 <div className="relative flex justify-between items-center w-full">
-                  <div className="progress absolute border-2 border-gray-400 w-full top-[50%] -translate-y-1/2"></div>
-                  <div className="p-2 rounded-full flex justify-center items-center flex-col z-10 bg-white ">
-                    <p className="bg-black w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-black text-white text-sm ">1</p>
-                    <p className="text-xs">Basic Detail</p>
+                  <div className="progress absolute border border-gray-400 w-full top-[50%] -translate-y-1/2"></div>
+                  <div className="p-2 rounded-full flex justify-center items-center gap-2 flex-col z-10 bg-white ">
+                    <p className="bg-black w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-black text-white text-xs ">1</p>
+                    <p className="text-[10px]">Basic Detail</p>
                   </div>
-                  <div className="p-2 rounded-full flex justify-center items-center flex-col z-10 bg-white">
-                    <p className="bg-black w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-black text-white text-sm ">1</p>
-                    <p className="text-xs">Membership Detail</p>
+                  <div className="p-2 rounded-full flex justify-center items-center gap-2 flex-col z-10 bg-white">
+                    <p className="bg-gray-200 w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-gray-200 text-white text-xs ">2</p>
+                    <p className="text-[10px]">Membership Detail</p>
                   </div>
-                  <div className="p-2 rounded-full flex justify-center items-center flex-col z-10 bg-white">
-                    <p className="bg-black w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-black text-white text-sm ">1</p>
-                    <p className="text-xs">Payment</p>
+                  <div className="p-2 rounded-full flex justify-center items-center gap-2 flex-col z-10 bg-white">
+                    <p className="bg-gray-200 w-2 h-2 rounded-full flex justify-center items-center p-2 border-4 border-gray-200 text-white text-xs">3</p>
+                    <p className="text-[10px]">Payment</p>
                   </div>
                   
                 </div>
@@ -121,7 +122,27 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
             </div>
             <div>
               <form>
-                
+                <h1>Basic Details</h1>
+                <div className="flex gap-3 w-full mt-2">
+                  <div className="w-1/2 flex flex-col justify-between">
+                    <input type="text" placeholder="Enter name" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full "/>
+                    <input type="text" placeholder="Enter phone no" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full"/>
+                    <input type="text" placeholder="Enter email" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full"/>
+                  </div>
+                  <div className="border-4 border-dotted border-gray-400 h-full w-1/2 rounded-md py-6 flex flex-col justify-center items-center gap-2 ">
+                    <input type="file" id="your_file" className="hidden outline-none" />
+                    <TbFileUpload className="text-2xl" />
+                    <h4 className="text-sm ">Drop your files here</h4>
+                    <em className="text-[8px] text-gray-50">Maximum upload file size is 2mb</em>
+                  </div>
+                </div>
+                <div>
+                  <select className=" cursor-pointer">
+                    <option className=" " disabled selected>--select--</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
               </form>
             </div>
             <p>Sign up and be a part of our amazing community!</p>
