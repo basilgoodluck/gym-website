@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "@/scenes/navbar/link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -12,6 +12,8 @@ type Props = {
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isMobileNav, setIsMobileNav] = useState<boolean>(false);
+  const openFile = useRef<HTMLInputElement>(null)
+  const selectGender = useRef<HTMLInputElement>(null)
   const flexBetween = "flex items-center justify-between";
   const isAboveMediaScreen = useMediaQuery("(min-width: 1060px)");
 
@@ -23,6 +25,13 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
       document.body.style.overflow = "";
     }
   }, [isModalOpen, isMobileNav]);
+
+  const openUpload = () => {
+    openFile.current?.click()
+  }
+  const openSelectGender = () => {
+    selectGender.current?.click()
+  }
 
   return (
     <div className={`${flexBetween} w-full sticky top-0 z-30 shadow-lg`}>
@@ -121,34 +130,37 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
               </div>
             </div>
             <div>
-              <form>
+              <form className="flex flex-col gap-4">
                 <h1>Basic Details</h1>
-                <div className="flex gap-3 w-full mt-2">
+                <div className="flex gap-3 w-full">
                   <div className="w-1/2 flex flex-col justify-between">
                     <input type="text" placeholder="Enter name" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full "/>
                     <input type="text" placeholder="Enter phone no" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full"/>
                     <input type="text" placeholder="Enter email" className="outline-none bg-gray-200 rounded-md py-2 px-2 text-xs w-full"/>
                   </div>
-                  <div className="border-4 border-dotted border-gray-400 h-full w-1/2 rounded-md py-6 flex flex-col justify-center items-center gap-2 ">
-                    <input type="file" id="your_file" className="hidden outline-none" />
+                  <button type="button" onClick={openUpload} className="border-4 border-dotted border-gray-400 h-full w-1/2 rounded-md py-6 flex flex-col justify-center items-center gap-2 ">
+                    <input type="file" ref={openFile} id="your_file" className="hidden outline-none" />
                     <TbFileUpload className="text-2xl" />
                     <h4 className="text-sm ">Drop your files here</h4>
                     <em className="text-[8px] text-gray-50">Maximum upload file size is 2mb</em>
-                  </div>
+                  </button>
                 </div>
-                <div>
-                  <select className=" cursor-pointer">
-                    <option className=" " disabled selected>--select--</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                  </select>
+                <div className="flex gap-3">
+                  <button type="button" className="bg-gray-200 py-1  rounded-md w-full" onClick={openSelectGender} >
+                    {/* <p ref={selectGender}>--select--</p> */}
+                    <select className={`cursor-pointer appearance-none bg-transparent outline-none bg-gray-200 border-0 text-sm`}>
+                      <option className="bg-gray-200 text-sm]"  disabled selected>Select Gender</option>
+                      <option className="text-sm text-center">Male</option>
+                      <option className="text-sm text-center">Female</option>
+                    </select>
+                  </button>
+                  <input type="text" className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter age" />
+                  <input className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter weight" />
+                  <input className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter height" />
                 </div>
+                <button onClick={() => setIsModalOpen(false)} className="mt- bg-black text-white px-4 py-2 rounded">Next</button>
               </form>
             </div>
-            <p>Sign up and be a part of our amazing community!</p>
-            <button onClick={() => setIsModalOpen(false)} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">
-              Close
-            </button>
           </div>
         </div>
       )}
