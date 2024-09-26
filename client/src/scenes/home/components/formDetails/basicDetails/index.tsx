@@ -32,7 +32,7 @@ const BasicDetails = ({openSelectGender, openUpload, openFile }: Props) => {
                         <option className="text-xs text-center">Female</option>
                     </select>
                 </button>
-                <input type="text" className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter age" />
+                <input type="text" className="bg-gray-200 w-full rounded-md text-sm text-center outline-none"  placeholder="Enter age" />
                 <input className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter weight" />
                 <input className="bg-gray-200 w-full rounded-md text-sm text-center outline-none" placeholder="Enter height" />
             </div>

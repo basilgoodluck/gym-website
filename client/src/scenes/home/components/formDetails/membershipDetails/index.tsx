@@ -7,13 +7,13 @@ const GoalButton = memo(({goal, isSelected, onClick}: {goal: string, isSelected:
     <button 
       type="button"
       onClick={onClick}
-      className={`px-4 py-2 rounded ${isSelected ? "bg-black text-white" : "bg-gray-200 text-black"}`}
+      className={`px-4 py-1 text-sm rounded ${isSelected ? "bg-black text-white" : "bg-gray-200 text-black"}`}
     > {goal} </button>
   )
 } )
 const MembershipDetails = ({}: Props) => {
   const [selectedGoals, setSetSelectedGoals] = useState<string[]>([])
-  const goals = ["Goal 1", "Goal 2", "Goal 3", "Goal 4", "Goal 5", "Goal 6", "Goal 7", "Goal 8", "Goal 9"];
+  const goals = ["Goal 1", "Goal 2", "Goal 3", "Goal 4", "Goal 5", "Goal 6", "Goal 7", "Goal 8"];
 
   const toggleGoal = (goal: string) => {
     setSetSelectedGoals((prevGoals) => 
@@ -38,8 +38,8 @@ const MembershipDetails = ({}: Props) => {
               <p className=" whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">Plan duration</p>              
             </div>
             <div className="flex justify-between gap-4">
-              <p className="w-full py-2 whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">Start date</p>              
-              <p className="w-full py-2 whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">End date</p>              
+              <p className="w-full py-1 whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">Start date</p>              
+              <p className="w-full py-1 whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">End date</p>              
             </div>
             <div className="flex flex-col gap-2">
               <h4>Your goals</h4>

@@ -15,6 +15,12 @@ const JoinUsModal = ({}: Props) => {
     const openSelectGender = () => {
         selectGender.current?.click()
     }
+    const goPrevStep = () => {
+        setCurrentStep((prevStep) => Math.max(prevStep - 1, 1))
+    }
+    const goNextStep = () => {
+        setCurrentStep((prevStep) => Math.min(prevStep + 1, 3))
+    }
   return (
     <div>
         <div>
@@ -54,7 +60,7 @@ const JoinUsModal = ({}: Props) => {
             {currentStep && currentStep === 3 && (
                 <Payment />
             )}
-            <button type="button" onClick={() => setCurrentStep(e => e + 1)} className="w-full bg-black text-white px-4 py-2 rounded">Next</button>
+            <button type="button" onClick={() => goNextStep()} className="w-full bg-black text-white px-4 py-2 rounded">Next</button>
         </form>
     </div>
   )
