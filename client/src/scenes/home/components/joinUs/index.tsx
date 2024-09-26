@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import BasicDetails from "../formDetails/basicDetails";
 import MembershipDetails from "../formDetails/membershipDetails";
-import BillingDetails from "../formDetails/billingDetails";
+import Payment from "../formDetails/payment";
 
 type Props = {}
 
@@ -52,7 +52,7 @@ const JoinUsModal = ({}: Props) => {
             )}
             
             {currentStep && currentStep === 3 && (
-                <BillingDetails />
+                <Payment />
             )}
             <button type="button" onClick={() => setCurrentStep(e => e + 1)} className="w-full bg-black text-white px-4 py-2 rounded">Next</button>
         </form>

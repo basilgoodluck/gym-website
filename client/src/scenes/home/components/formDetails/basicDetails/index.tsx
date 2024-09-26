@@ -25,8 +25,8 @@ const BasicDetails = ({openSelectGender, openUpload, openFile }: Props) => {
                 </button>
             </div>
             <div className="flex gap-3">
-                <button type="button" className="bg-gray-200 py-1  rounded-md w-full" onClick={openSelectGender} >
-                    <select className={`cursor-pointer appearance-none bg-transparent outline-none bg-gray-200 border-0 text-sm`}>
+                <button type="button" className="bg-gray-200 py-2 rounded-md w-full text-[8px]" onClick={openSelectGender} >
+                    <select className={`cursor-pointer appearance-none bg-transparent outline-none bg-gray-200 text-gray-300 border-0 text-xs px-3`}>
                         <option className="bg-gray-200 text-sm]"  disabled selected>Select Gender</option>
                         <option className="text-xs text-center">Male</option>
                         <option className="text-xs text-center">Female</option>
