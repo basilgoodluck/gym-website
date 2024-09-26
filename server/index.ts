@@ -1,30 +1,59 @@
-import express, { json } from "express"
-import { connect } from "mongoose"
-import cors from "cors"
-import { config } from "dotenv"
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import dotenv from "dotenv";
+import Stripe from "stripe";
 
-config()
+dotenv.config();
 
-const app = express()
+const app = express();
 
-app.use(json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
+const MONGODB_URL = process.env.MONGODB_URL;
+const STRIPE_SK = process.env.STRIPE_SK;
 
-const mongourl = process.env.MONGODB_URL as string
-if(!mongourl){
-    throw new Error("Mongo url is not defined!")
+if (!MONGODB_URL) {
+  throw new Error("MONGODB_URL is not defined in the environment variables");
 }
 
-connect(mongourl)
-    .then(() => console.log("Mongodb is connected"))
-    .catch((err) => console.log(err.message))
+if (!STRIPE_SK) {
+  throw new Error("STRIPE_SK is not defined in the environment variables");
+}
 
-app.get("/add", (req, res) => {
-    console.log(req)
-})
+const stripe = new Stripe(STRIPE_SK, { apiVersion: '2023-10-16' });
+
+mongoose.connect(MONGODB_URL)
+  .then(() => console.log("MongoDB is connected"))
+  .catch((err) => {
+    console.error("MongoDB connection error:", err);
+    process.exit(1);
+  });
+
+app.post("/create-payment-intent", async (req, res) => {
+  try {
+    const { amount, currency } = req.body;
+
+    if (!amount || !currency) {
+      return res.status(400).json({ error: "Amount and currency are required" });
+    }
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount, 
+      currency,
+    });
+
+    res.json({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    console.error("Error creating payment intent:", error);
+    res.status(400).json({ error: (error as Error).message });
+  }
+});
 
 app.listen(PORT, () => {
-    console.log("Server is running")
-})
+  console.log(`Server is running on port ${PORT}`);
+});
