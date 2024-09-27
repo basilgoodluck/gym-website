@@ -15,9 +15,6 @@ const JoinUsModal = ({}: Props) => {
     const openSelectGender = () => {
         selectGender.current?.click()
     }
-    const goPrevStep = () => {
-        setCurrentStep((prevStep) => Math.max(prevStep - 1, 1))
-    }
     const goNextStep = () => {
         setCurrentStep((prevStep) => Math.min(prevStep + 1, 3))
     }
