@@ -1,5 +1,5 @@
 import express, { json } from "express";
-import { connect } from "mongoose";
+import { connectToDatabase } from "./database";
 import cors from "cors";
 import { config } from "dotenv";
 import Stripe from "stripe";
@@ -7,48 +7,59 @@ import Stripe from "stripe";
 config();
 
 const app = express();
-
 app.use(json());
-app.use(cors({ origin: 'http://localhost:5173' }));
-const stripeSK = process.env.STRIPE_SK as string;
-if(!stripeSK){
+
+const allowedOrigins = ['http://localhost:5173', 'https://gym-website-seven-pink.vercel.app'];
+app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, origin);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+}));
+
+const stripeSK = process.env.STRIPE_SK;
+if (!stripeSK) {
     throw new Error("Missing stripe key");
 }
 const stripe = new Stripe(stripeSK);
 
-
 const PORT = process.env.PORT || 3000;
 
-const mongourl = process.env.MONGODB_URL as string;
-if(!mongourl){
-    throw new Error("Mongo url is not defined!");
-}
-
-connect(mongourl)
-    .then(() => console.log("Mongodb is connected"))
-    .catch((err) => console.log(err.message))
+const startServer = async () => {
+    try {
+        await connectToDatabase();
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT} and MongoDB is connected...`);
+        });
+    } catch (error) {
+        console.error("Failed to start server:", error);
+        process.exit(1);
+    }
+};
 
 app.get("/add", (req, res) => {
-    console.log(req);
+    console.log(req.body);
+    res.json({ message: "Received" });
 });
 
-app.post("/payment", async (req, res) => {
-    try{
+app.post("/api/payment", async (req, res) => {
+    try {
         const { amount, currency } = req.body;
 
         const paymentIntent = await stripe.paymentIntents.create({
-            amount, 
+            amount,
             currency,
-        })
+        });
 
         res.json({
-            clientSecret: paymentIntent.client_secret,
+            clientSecret: paymentIntent.client_secret
         });
     } catch (error) {
-        res.status(400).json({ error: (error as Error).message })
+        res.status(400).json({ error: (error as Error).message });
     }
-})
-
-app.listen(PORT, () => {
-    console.log("Server is running");
 });
+
+startServer();
