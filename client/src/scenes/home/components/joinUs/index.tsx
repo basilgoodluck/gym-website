@@ -3,28 +3,29 @@ import BasicDetails from "../formDetails/basicDetails";
 import MembershipDetails from "../formDetails/membershipDetails";
 import Payment from "../formDetails/payment";
 
-type Props = {}
 
-const JoinUsModal = ({}: Props) => {
-  interface FormDataType {
-    basicDetails: {
-      name: string;
-      phone: string;
-      email: string;
-      file: File | null;
-      gender: string | null;
-      age: string;
-      weight: string;
-      height: string;
-    };
-    memberShipDetails: {
-      plan: string;
-      duration: string;
-      startDate: string;
-      endDate: string;
-      goals: string[];
-    };
-  }
+const API_URL = import.meta.env.VITE_GYM_WEBSITE_API_URL
+export interface FormDataType {
+  basicDetails: {
+    name: string;
+    phone: string;
+    email: string;
+    file: File | null;
+    gender: string | null;
+    age: string;
+    weight: string;
+    height: string;
+  };
+  memberShipDetails: {
+    plan: string;
+    duration: string;
+    startDate: string;
+    endDate: string;
+    goals: string[];
+    gender: string | number | undefined;
+  };
+}
+const JoinUsModal = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormDataType>({
@@ -44,10 +45,10 @@ const JoinUsModal = ({}: Props) => {
       startDate: "",
       endDate: "",
       goals: [],
+      gender: "",
     },
   });
 
-  // Function to handle form submission
   const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const isValid = validateForm();
@@ -57,7 +58,6 @@ const JoinUsModal = ({}: Props) => {
       return;
     }
 
-    // Prepare form data for submission
     const formDataToSend = new FormData();
     Object.entries(formData.basicDetails).forEach(([key, value]) => {
       formDataToSend.append(`basicDetails[${key}]`, value as any);
@@ -66,11 +66,9 @@ const JoinUsModal = ({}: Props) => {
       formDataToSend.append(`memberShipDetails[${key}]`, value as any);
     });
 
-    // Send formData to the backend
     try {
-      const response = await fetch('http://localhost:3000/api/submit', {
+      const response = await fetch(`${API_URL}/submit`, {
         method: 'POST',
-        headers: { "Content-Type": "application/json" },
         body: formDataToSend,
       });
       const data = await response.json();
@@ -80,7 +78,6 @@ const JoinUsModal = ({}: Props) => {
     }
   };
 
-  // Example validation function (expand as needed)
   const validateForm = () => {
     const { name, phone, email } = formData.basicDetails;
     if (!name || !phone || !email) {
@@ -90,7 +87,6 @@ const JoinUsModal = ({}: Props) => {
     return true;
   };
 
-  // File and gender selection handlers
   const openFile = useRef<HTMLInputElement>(null);
   const selectGender = useRef<HTMLInputElement>(null);
 
@@ -102,7 +98,6 @@ const JoinUsModal = ({}: Props) => {
     selectGender.current?.click();
   };
 
-  // Function to handle navigation between steps
   const goNextStep = () => {
     setCurrentStep((prevStep) => Math.min(prevStep + 1, 3));
   };
@@ -126,27 +121,29 @@ const JoinUsModal = ({}: Props) => {
           </div>
         </div>
       </div>
-      
-      {/* Form content */}
       <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
         {currentStep === 1 && (
           <BasicDetails
             openSelectGender={openSelectGender}
             openUpload={openUpload}
             openFile={openFile}
+            formData={formData}
+            setFormData={setFormData}
           />
         )}
 
-        {currentStep === 2 && <MembershipDetails />}
+        {currentStep === 2 && 
+          (<MembershipDetails 
+            formData={formData}
+            setFormData={setFormData}
+          />)}
 
         {currentStep === 3 && <Payment />}
 
-        {/* Conditional rendering of the Next button */}
         <button type="button" onClick={goNextStep} className={`w-full bg-black text-white px-4 py-2 rounded ${currentStep === 3 && "hidden"}`}>
           Next
         </button>
 
-        {/* Submit button for the last step */}
         {currentStep === 3 && (
           <button type="submit" className={`w-full bg-black text-white px-4 py-2 rounded ${currentStep && currentStep === 3 && "hidden"}`}>
             Submit

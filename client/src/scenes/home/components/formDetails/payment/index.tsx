@@ -4,7 +4,7 @@ import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 
 
 const stripePromise = loadStripe('pk_test_51N0AdUAcitfUY8n6q3OfCbMOIn4tWl7Dki3qbTbhEts7FbQ8sijvvfGQp65Z1JHQZdMBGOuRGTwWjOCXjT4JtsM700DJgaaErP');
-const API_URL = process.env.GYM_WEBSITE_API_URL
+const API_URL = import.meta.env.VITE_GYM_WEBSITE_API_URL
 
 const CheckoutForm = ({ clientSecret }: { clientSecret: string | null }) => {
   const stripe = useStripe();

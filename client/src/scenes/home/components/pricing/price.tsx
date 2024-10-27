@@ -11,10 +11,10 @@ function Price({ level, amount, duration, standard, advanced }: Props) {
     <div className="flex flex-col gap-4 mt-6">
         <div className="flex flex-col gap-2">
           <div>
-            <div className="bg-black drop-shadow-2xl px-3 py-7 rounded-2xl flex flex-col gap-4">
+            <div className=" bg-bl border drop-shadow-3xl px-3 py-7 rounded-2xl flex flex-col gap-4" style={{boxShadow: "0px 4px 10px rgba(128, 128, 128, 0.5)"}}>
               <p className="text-xs text-blue-200">{level}</p>
-              <h1 className="text-5xl font-bold text-white">{amount}<span className="text-xs font-normal">/{duration}</span></h1>
-              <p className="text-sm text-[#aaa]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti maxime excepturi fuga quaerat, quod commodi a magni</p>
+              <h1 className="text-5xl font-bold text-black">{amount}<span className="text-xs font-normal">/{duration}</span></h1>
+              <p className="text-sm text-gray">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti maxime excepturi fuga quaerat, quod commodi a magni</p>
               <div className="flex flex-col gap-3 text-sm text-[#aaa]">
                 <div className="flex gap-3">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6 text-blue-200">

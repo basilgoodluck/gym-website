@@ -1,6 +1,10 @@
-import { memo, useState } from "react"
+import { memo, SetStateAction, useState } from "react";
+import { FormDataType } from "../../joinUs";
 
-type Props = {}
+type Props = {
+  formData: FormDataType,
+  setFormData: React.Dispatch<SetStateAction<FormDataType>>
+}
 
 const GoalButton = memo(({goal, isSelected, onClick}: {goal: string, isSelected: boolean, onClick: () => void }) => {
   return(
@@ -11,9 +15,21 @@ const GoalButton = memo(({goal, isSelected, onClick}: {goal: string, isSelected:
     > {goal} </button>
   )
 } )
-const MembershipDetails = ({}: Props) => {
+const MembershipDetails = ({ formData, setFormData }: Props) => {
   const [selectedGoals, setSetSelectedGoals] = useState<string[]>([])
   const goals = ["Goal 1", "Goal 2", "Goal 3", "Goal 4", "Goal 5", "Goal 6", "Goal 7", "Goal 8"];
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+    const { name, value } = e.target;
+    
+    setFormData((prevData) => ({
+      ...prevData,
+      memberShipDetails: {
+        ...prevData.memberShipDetails,
+        [name]: value
+      }
+    }))
+  }
 
   const toggleGoal = (goal: string) => {
     setSetSelectedGoals((prevGoals) => 
@@ -29,7 +45,7 @@ const MembershipDetails = ({}: Props) => {
         <div className="flex flex-col gap-3">
             <div className="flex gap-3">
               <button type="button" className="bg-gray-200 py-1 rounded-md w-full"  >
-                <select className={`cursor-pointer appearance-none bg-transparent outline-none bg-gray-200 border-0 text-sm`}>
+                <select name="gender" value={formData.memberShipDetails.gender} onChange={handleChange} className={`cursor-pointer appearance-none bg-transparent outline-none bg-gray-200 border-0 text-sm`}>
                     <option className="bg-gray-200 text-sm]"  disabled selected>Select Plan</option>
                     <option className="text-xs text-center">Male</option>
                     <option className="text-xs text-center">Female</option>
@@ -38,7 +54,7 @@ const MembershipDetails = ({}: Props) => {
               <p className=" whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">Plan duration</p>              
             </div>
             <div className="flex justify-between gap-4">
-              <p className="w-full py-1 whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">Start date</p>              
+              <p className="w-full py-1 whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">{formData.memberShipDetails.plan}</p>              
               <p className="w-full py-1 whitespace-nowrap px-3 bg-gray-200 rounded-md text-sm flex justify-center items-center">End date</p>              
             </div>
             <div className="flex flex-col gap-2">
