@@ -19,6 +19,17 @@ export async function connectToDatabase() {
   } catch (error) {
     console.error("MongoDB connection error:", error);
     throw error;
+  } 
+}
+
+export async function fetchReviews() {
+  try {
+    await client.connect();
+    const database = client.db('gym-website');
+    return await database.collection('reviews').find({}).toArray()
+  } catch(error) {
+    console.error("Error fetching reviews: " + error)
+    return []
   }
 }
 

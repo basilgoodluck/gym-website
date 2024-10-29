@@ -1,8 +1,28 @@
 import groupImages from "@/assets/groupReview.png"
+import { useEffect, useState } from "react"
 
-type Props = {}
 
-const Reviews = ({}: Props) => {
+const Reviews = () => {
+  const [reviews, setReviews] = useState<any[]>([])
+
+  useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        const response = await fetch("/api/reviews"); // Fetch from the backend API
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const fetchedReviews = await response.json();
+        setReviews(fetchedReviews);
+      } catch (err) {
+        console.error(err)
+      }
+    };
+
+    loadReviews();
+  }, []);
+
+
   return (
     <div className="flex flex-col gap-4 px-6 mt-6">
       <div className="flex flex-col gap-10">
@@ -23,11 +43,13 @@ const Reviews = ({}: Props) => {
           <div>
             <div className="flex overflow-hidden">
               <div className="w-full border border-gray-600 p-3 rounded-2xl">
-                <div className="flex justify-between">
-                  <p>Richard</p>
-                  <p>Logo</p>
-                </div>
-                <p className="text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti maxime excepturi fuga quaerat, quod commodi a magni, quidem atque blanditiis voluptas omnis inventore hic velit? Ullam quasi magnam amet qui?</p>
+                {reviews.map((item) => (
+                  <div key={item._id}>
+                    <p>item.name</p>
+                    <p>item.company</p>
+                    <p>item.review</p>
+                  </div>
+                ))}
               </div>
             </div>              
           </div>

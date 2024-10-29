@@ -1,5 +1,5 @@
 import express, { json } from "express";
-import { connectToDatabase } from "./database";
+import { connectToDatabase, fetchReviews } from "./mongodb";
 import cors from "cors";
 import { config } from "dotenv";
 import Stripe from "stripe";
@@ -40,10 +40,14 @@ const startServer = async () => {
     }
 };
 
-app.get("/add", (req, res) => {
-    console.log(req.body);
-    res.json({ message: "Received" });
-});
+app.get("api/reviews", async (req, res) => {
+    try {
+        const reviews = await fetchReviews()
+        res.json(reviews);
+    } catch (error) {
+        res.status(500).json({ error: "Error fetching reviews" });
+    }
+})
 
 app.post("/api/payment", async (req, res) => {
     try {
