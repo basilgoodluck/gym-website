@@ -8,7 +8,7 @@ const Reviews = () => {
   useEffect(() => {
     const loadReviews = async () => {
       try {
-        const response = await fetch("https://gym-website-ntya.onrender.com/api/reviews"); // Fetch from the backend API
+        const response = await fetch("https://gym-website-ntya.onrender.com/api/reviews");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

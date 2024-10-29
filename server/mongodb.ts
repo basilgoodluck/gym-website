@@ -10,29 +10,36 @@ const client = new MongoClient(uri, {
   }
 });
 
+let isConnected = false;
+
 export async function connectToDatabase() {
   try {
-    await client.connect();
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    if (!isConnected) {
+      await client.connect();
+      await client.db("admin").command({ ping: 1 });
+      console.log("Pinged your deployment. You successfully connected to MongoDB!");
+      isConnected = true; 
+    }
     return client;
   } catch (error) {
     console.error("MongoDB connection error:", error);
     throw error;
-  } 
+  }
 }
 
 export async function fetchReviews() {
   try {
-    await client.connect();
     const database = client.db('gym-website');
-    return await database.collection('reviews').find({}).toArray()
-  } catch(error) {
-    console.error("Error fetching reviews: " + error)
-    return []
+    return await database.collection('reviews').find({}).toArray();
+  } catch (error) {
+    console.error("Error fetching reviews: " + error);
+    return [];
   }
 }
 
 export async function closeConnection() {
-  await client.close();
+  if (isConnected) {
+    await client.close();
+    isConnected = false; 
+  }
 }
