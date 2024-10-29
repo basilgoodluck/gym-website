@@ -40,7 +40,7 @@ const startServer = async () => {
     }
 };
 
-app.get("api/reviews", async (req, res) => {
+app.get("/api/reviews", async (req, res) => {
     try {
         const reviews = await fetchReviews()
         res.json(reviews);
