@@ -6,6 +6,7 @@ import Pricing from "./components/pricing"
 import Reviews from "./components/reviews"
 import Contact from "./components/contact"
 import Footer from "./components/footer"
+import Achieve from "./components/achieve"
 
 type Props = {}
 
@@ -13,6 +14,7 @@ const Home = ({}: Props) => {
   return (
     <div className="min-h-full flex flex-col gap-10">
       <Hero />
+      <Achieve />
       <WhyChoose />
       <OurTrainers />
       <Coaches />

@@ -20,7 +20,7 @@ const Pricing = ({}: Props) => {
   console.log(isMonth, isYear)
   return (
     <div className="bg-[#eee] flex flex-col gap-4 px-6 mt-6 py-5 rounded-3xl">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 md:w-4/5 mx-auto ">
           <div className="flex justify-between items-start">
             <div className="flex flex-col gap-2">
               <p className="font-medium uppercase text-xs">Pricing plan</p>
@@ -31,7 +31,7 @@ const Pricing = ({}: Props) => {
               <button className="bg-black h-full w-full rounded-e-2xl py-2 px-3" onClick={changeDuration} style={buttonStyleYear}>Yearly</button>
             </div>
           </div>
-          <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-4 md:flex-row'>
             {
               isMonth ? (
                 <>

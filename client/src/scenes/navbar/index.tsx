@@ -26,8 +26,8 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   }, [isModalOpen, isMobileNav]);
 
   return (
-    <div className={`${flexBetween} w-full sticky top-0 z-30 shadow-lg`}>
-      <div className={`${flexBetween} p-4 w-full bg-white`}>
+    <div className={`${flexBetween} w-full sticky top-0 z-[999] shadow-lg `}>
+      <div className={`${flexBetween} p-4 w-full bg-white md:w-4/5 mx-auto`}>
         <div className="">
           <h4 className="text-xl font-bold">
             <span className="text-secondary-300 italic font-extrabold text-3xl">A</span>

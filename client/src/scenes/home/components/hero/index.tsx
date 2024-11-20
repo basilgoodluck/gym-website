@@ -4,8 +4,8 @@ type Props = {}
 
 const Hero = ({}: Props) => {
   return (
-    <div>
-        <div className="flex flex-col items-center text-white py-4 mt-16 gap-5">
+    <div className="md:w-4/5 mx-auto">
+        <div className="flex flex-col items-center text-white py-4 mt-16 gap-5 md:flex-row">
             <div className=" flex flex-col gap-2 px-6">
                 <h1 className="text-4xl text-primary-500 ">Transform Your Health, One Step at a Time</h1>
                 <p className="text-gray-500 text-sm font-thin">Our personalized fitness consultations are designed to help you</p>
@@ -17,30 +17,6 @@ const Hero = ({}: Props) => {
             </div>
             <div className="w-3/5">
               <img src={HomeBg} className="w-full" />
-            </div>
-            <div className="w-full">
-              <div className="w-full bg-black py-5 px-6 flex justify-between">
-                <div>
-                  <h4 className="text-xs">500+</h4>
-                  <p className="text-[7px] font-extralight">Happy members</p>
-                  <p className="text-[7px] font-extralight">Our community is growing fast</p>
-                </div>
-                <div>
-                  <h4 className="text-xs">5+</h4>
-                  <p className="text-[7px] font-extralight">Years experience</p>
-                  <p className="text-[7px] font-extralight">Experience in various workouts</p>
-                </div>
-                <div>
-                  <h4 className="text-xs">13+</h4>
-                  <p className="text-[7px] font-extralight">Certified trainers</p>
-                  <p className="text-[7px] font-extralight">Guidance at every step</p>
-                </div>
-                <div>
-                  <h4 className="text-xs">90%</h4>
-                  <p className="text-[7px] font-extralight">Customer satisfaction</p>
-                  <p className="text-[7px] font-extralight">We ensure your progress satisfaction</p>
-                </div>
-              </div>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ type Props = {}
 const WhyChoose = ({}: Props) => {
   return (
     <div>
-        <div className="flex flex-col gap-4 px-6 mt-6">
+        <div className="flex flex-col gap-4 px-6 mt-6 md:w-4/5 mx-auto">
             <h1 className="text-center text-primary-500 font-bold text-2xl">Why Choose Us</h1>
             <p className="text-center text-gray-500 text-sm font-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio sit labore mollitia, dolore cupiditate illo est eius eveniet</p>
             <div>
