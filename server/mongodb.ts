@@ -30,7 +30,9 @@ export async function connectToDatabase() {
 export async function fetchReviews() {
   try {
     const database = client.db('gym-website');
-    return await database.collection('reviews').find({}).toArray();
+    const reviews = await database.collection('reviews').find({}).toArray();
+    console.log(reviews)
+    return reviews
   } catch (error) {
     console.error("Error fetching reviews: " + error);
     return [];
