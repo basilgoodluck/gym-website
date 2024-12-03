@@ -1,26 +1,7 @@
 import groupImages from "@/assets/groupReview.png"
-import { useEffect, useState } from "react"
 
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState<any[]>([])
-
-  useEffect(() => {
-    const loadReviews = async () => {
-      try {
-        const response = await fetch("https://gym-website-ntya.onrender.com/api/reviews");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const fetchedReviews = await response.json();
-        setReviews(fetchedReviews);
-      } catch (err) {
-        console.error(err)
-      }
-    };
-
-    loadReviews();
-  }, []);
 
 
   return (
